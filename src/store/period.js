@@ -1,13 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initailPeriodState = {
-  startDate: "2022-02-02",
-  endDate: "2022-03-02",
+import DefaultDate from "../constants/defaultDate";
+
+const { defaultStartDate, defaultEndDate } = DefaultDate;
+const initialPeriodState = {
+  startDate: defaultStartDate,
+  endDate: defaultEndDate,
 };
 
 const periodSlice = createSlice({
   name: "period",
-  initialState: initailPeriodState,
+  initialState: initialPeriodState,
   reducers: {
     changePeriod(state, action) {
       state.startDate = action.payload.startDate;

@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import useInput from "../../../hooks/useInput";
 import { changePeriod } from "../../../store/period";
@@ -28,7 +27,6 @@ const DatePicker = () => {
     const payload = { startDate: startDateValue, endDate: endDateValue };
     dispatch(changePeriod(payload));
     setIsOpen(false);
-    console.log(startDate);
   };
   return (
     <div>
