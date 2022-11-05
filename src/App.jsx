@@ -1,8 +1,14 @@
 import React from 'react';
-import { Router } from 'react-router';
+import ADManagement from './components/ADManagement';
+import Home from './pages/Home';
 
 const App = () => {
-  return <Router />;
+  return (
+    <>
+      <Home />
+      <ADManagement />
+    </>
+  );
 };
 
 export default App;
