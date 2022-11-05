@@ -1,5 +1,11 @@
+import styled from "styled-components";
+
+const Div = styled.div`
+  height: 50px;
+`;
+
 const Header = () => {
-  return <div>Header</div>;
+  return <Div>Header</Div>;
 };
 
 export default Header;
