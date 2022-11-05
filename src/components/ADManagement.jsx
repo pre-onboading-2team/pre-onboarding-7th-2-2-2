@@ -1,8 +1,12 @@
+/* eslint-disable arrow-parens */
 /* eslint-disable react/no-array-index-key */
+import { useState } from 'react';
 import styled from 'styled-components';
 import DataItem from './DataItem';
+import TitleBox from './TitleBox';
 /* eslint-disable no-unused-expressions */
 const ADManagement = () => {
+  const [filtered, setFiltered] = useState([]);
   const ListData = [
     {
       id: 1,
@@ -62,8 +66,36 @@ const ADManagement = () => {
     },
   ];
 
+  const handleFilter = e => {
+    if (e.target.value === '전체광고') {
+      setFiltered(ListData);
+    } else {
+      setFiltered(
+        [ListData].filter(item => {
+          console.log(item);
+          console.log(item.status);
+          return item.status === e.target.value;
+        })
+      );
+    }
+  };
+
+  // const [selectValue, setSelectValue] = useState();
+  // const onChangeSelect = e => {
+  //   setSelectValue(e.target.value);
+  // };
   return (
     <ADContainer>
+      <TitleBox name="광고관리" />
+      <SelectContainer>
+        <select name="adState" onChange={handleFilter}>
+          <option value="전체광고">전체 광고</option>
+          <option value="active">진행중</option>
+          <option value="ended">중단됨</option>
+        </select>
+
+        <button type="button">광고 만들기</button>
+      </SelectContainer>
       <DataItemBox>
         {ListData.map((v, i) => (
           <DataItem key={i} data={v} />
@@ -75,10 +107,29 @@ const ADManagement = () => {
 
 const ADContainer = styled.div``;
 
+const SelectContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  select {
+    padding: 1rem;
+    border: 1px solid #d1d8dc;
+    border-radius: 10px;
+  }
+  button {
+    border-radius: 10px;
+    background-color: #586cf5;
+    padding: 1rem;
+    color: white;
+    font-weight: bold;
+  }
+`;
+
 const DataItemBox = styled.div`
-  width: 60%;
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  padding: 1rem;
 `;
 
 export default ADManagement;

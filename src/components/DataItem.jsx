@@ -1,3 +1,5 @@
+/* eslint-disable arrow-parens */
+/* eslint-disable default-case */
 /* eslint-disable react/jsx-one-expression-per-line */
 import styled from 'styled-components';
 
@@ -15,12 +17,21 @@ const DataItem = ({ key, data }) => {
     .split('')
     .splice(0, Sales.toString().length - 4);
 
+  const statusChange = data.status.replace(/(active|ended)/g, v => {
+    switch (v) {
+      case 'active':
+        return '진행중';
+      case 'ended':
+        return '중단됨';
+    }
+  });
+
   return (
     <DataItemContainer>
       <DataTitle>{data.title}</DataTitle>
       <DataBody>
         <div>상태</div>
-        <div>{data.status}</div>
+        <div>{statusChange}</div>
       </DataBody>
       <DataBody>
         <div>광고 생성일</div>
@@ -48,23 +59,35 @@ const DataItem = ({ key, data }) => {
           만원
         </div>
       </DataBody>
-      <DataItemBtn type="button">수정하기</DataItemBtn>
+      <DataItemBtn>
+        <button type="button">수정하기</button>
+      </DataItemBtn>
     </DataItemContainer>
   );
 };
 
 const DataItemContainer = styled.div`
-  border-radius: 5px;
+  border: 1px solid #d1d8dc;
+  border-radius: 10px;
+  padding: 2rem;
 `;
 
 const DataTitle = styled.div`
+  border-bottom: 1px solid #edeff1;
+  padding: 2rem 1rem;
   font-weight: bold;
+  font-size: 1.2rem;
 `;
-const DataItemBtn = styled.button`
+const DataItemBtn = styled.div`
   padding-top: 2rem;
+  button {
+    border: 1px solid #d1d8dc;
+    border-radius: 10px;
+    padding: 1rem;
+  }
 `;
 
 const DataBody = styled.div`
-  display: flex;
+  padding: 1rem 1rem 0;
 `;
 export default DataItem;

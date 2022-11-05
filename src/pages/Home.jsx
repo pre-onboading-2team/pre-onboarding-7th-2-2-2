@@ -3,31 +3,17 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import ADManagement from '../components/ADManagement';
 import DashBoard from '../components/DashBoard';
-import SideBar from '../components/SideBar';
+import SideBar from '../components/sideBar/SideBar';
 
 const Home = () => {
-  const [content, setContent] = useState();
+  const [isNow, setIsNow] = useState(true);
 
-  const onClickBtn = e => {
-    const { name } = e.target;
-    setContent(name);
-  };
-
-  const selectComponent = {
-    대시보드: <DashBoard />,
-    광고관리: <ADManagement />,
-  };
   return (
     <HomeContainer>
       <SideBarBox>
-        <SideBar />
+        <SideBar setIsNow={setIsNow} />
       </SideBarBox>
-      <DashBoardBox>
-        <DashBoard onClick={onClickBtn} />
-      </DashBoardBox>
-      <div>
-        <ADManagement />
-      </div>
+      <DataBodyBox>{isNow ? <DashBoard /> : <ADManagement />}</DataBodyBox>
     </HomeContainer>
   );
 };
@@ -37,9 +23,8 @@ const HomeContainer = styled.div`
   height: 100%;
 `;
 
-const DashBoardBox = styled.div`
+const DataBodyBox = styled.div`
   width: 80%;
-  background-color: yellow;
 `;
 const SideBarBox = styled.div`
   width: 20%;

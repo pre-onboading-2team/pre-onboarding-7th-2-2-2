@@ -1,14 +1,21 @@
 import styled from 'styled-components';
 
-const Menu = () => {
+const Menu = ({ setIsNow }) => {
+  const handleDash = () => {
+    setIsNow(true);
+  };
+
+  const handleAd = () => {
+    setIsNow(false);
+  };
   return (
     <MenuContainer>
       <MenuTitle>광고센터</MenuTitle>
       <MenuBtnBox>
-        <MenuBtn type="button">대시보드</MenuBtn>
+        <MenuBtn onClick={() => handleDash()}>대시보드</MenuBtn>
       </MenuBtnBox>
       <MenuBtnBox>
-        <MenuBtn type="button">광고관리</MenuBtn>
+        <MenuBtn onClick={() => handleAd()}>광고관리</MenuBtn>
       </MenuBtnBox>
     </MenuContainer>
   );

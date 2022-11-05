@@ -3,12 +3,12 @@ import Service from './Service';
 import Menu from './Menu';
 import Guide from './Guide';
 
-const SideBar = () => {
+const SideBar = ({ setIsNow }) => {
   return (
     <>
       <LogoImg src="images/logo.png" alt="" />
       <Service />
-      <Menu />
+      <Menu setIsNow={setIsNow} />
       <Guide />
     </>
   );
