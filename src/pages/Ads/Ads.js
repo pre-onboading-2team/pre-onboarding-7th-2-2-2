@@ -1,5 +1,12 @@
+import { Header } from "./components";
+
 const Ads = () => {
-  return <div>Ads</div>;
+  return (
+    <div>
+      <Header />
+      Ads
+    </div>
+  );
 };
 
 export default Ads;

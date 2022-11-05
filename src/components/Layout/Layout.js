@@ -25,6 +25,7 @@ const Layout = () => {
       <Aside className="aside" />
       <div className="main">
         <Header />
+
         <Outlet />
       </div>
     </Container>
