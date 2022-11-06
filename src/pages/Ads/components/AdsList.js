@@ -35,5 +35,7 @@ const AdsList = () => {
 const Ul = styled.ul`
   display: flex;
   flex-wrap: wrap;
+  max-width: 1005px;
+  margin: 0 auto;
 `;
 export default AdsList;

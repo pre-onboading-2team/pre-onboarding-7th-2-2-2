@@ -6,6 +6,7 @@ const GlobalStyles = createGlobalStyle`
 ${reset}
 *{
   list-style:none;
+  box-sizing:border-box;
 }
 `;
 
