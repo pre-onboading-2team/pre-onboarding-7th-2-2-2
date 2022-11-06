@@ -10,8 +10,7 @@ const MetaList = () => {
   const { filteredData } = useSelector((state) => state.trendData);
 
   const [metaData, setMetaData] = useState({});
-  console.log(filteredData);
-  console.log(metaData);
+
   useEffect(() => {
     dispatch(getTrendData());
   }, []);

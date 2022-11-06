@@ -10,7 +10,15 @@ const { defaultStartDate, defaultEndDate } = DefaultDate;
 
 const getTrendData = createAsyncThunk("GET_TREND_DATA", async () => {
   const res = await axios.get(TREND_DATA_URL);
-  return res.data.report.daily;
+
+  const originalArr = res.data.report.daily;
+  const newArr = originalArr.map((data) => ({
+    ...data,
+    exposure: Math.round((data.click / data.ctr) * 100),
+    returns: (data.roas * data.cost) / 100,
+  }));
+
+  return newArr;
 });
 
 const initialTrendDataState = {

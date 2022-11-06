@@ -9,8 +9,13 @@ import {
   YAxis,
 } from "recharts";
 
-const Chart = () => {
+const Chart = ({ leftTagEntries, rightTagEntries }) => {
   const { filteredData } = useSelector((state) => state.trendData);
+
+  const [leftDataKey, leftDataTagName] = leftTagEntries;
+  const [rightDataKey, rightDataTagName] = rightTagEntries;
+  const formatDateToMMDD = (fullDateStr) =>
+    fullDateStr.toLocaleString().slice(5, 10);
 
   return (
     <LineChart
@@ -25,7 +30,7 @@ const Chart = () => {
       }}
     >
       <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="date" /> {/* 날짜 */}
+      <XAxis dataKey="date" tickFormatter={formatDateToMMDD} />
       <YAxis yAxisId="left" />
       <YAxis yAxisId="right" orientation="right" />
       <Tooltip />
@@ -33,14 +38,16 @@ const Chart = () => {
       <Line
         yAxisId="left"
         type="monotone"
-        dataKey="click" // 와이축 데이터 1
+        dataKey={leftDataKey} // 와이축 데이터 1
+        name={leftDataTagName}
         stroke="#8884d8"
         activeDot={{ r: 8 }}
       />
       <Line
         yAxisId="right"
         type="monotone"
-        dataKey="roas" // 와이축 데이터 2
+        dataKey={rightDataKey} // 와이축 데이터 2
+        name={rightDataTagName}
         stroke="#82ca9d"
       />
     </LineChart>
