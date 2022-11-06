@@ -5,6 +5,7 @@ import axios from "axios";
 import DefaultDate from "../constants/defaultDate";
 import { TREND_DATA_URL } from "../constants/url";
 import { changePeriod } from "./period";
+
 const { defaultStartDate, defaultEndDate } = DefaultDate;
 
 const getTrendData = createAsyncThunk("GET_TREND_DATA", async () => {
@@ -23,7 +24,6 @@ const trendDataSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getTrendData.fulfilled, (state, action) => {
       state.dailyData = action.payload;
-
       state.filteredData = action.payload.filter((data) => {
         return data.date >= defaultStartDate && data.date <= defaultEndDate;
       });

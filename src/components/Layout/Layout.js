@@ -16,6 +16,9 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     background-color: #d4d4d4;
+    > div:last-child {
+      flex: 1;
+    }
   }
 `;
 

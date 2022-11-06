@@ -1,11 +1,17 @@
+import styled from "styled-components";
+
 import DatePicker from "./DatePicker";
 const Header = () => {
   return (
-    <div>
-      대시보드
+    <StyledHeader>
+      <div>대시보드</div>
       <DatePicker />
-    </div>
+    </StyledHeader>
   );
 };
 
+const StyledHeader = styled.header`
+  display: flex;
+  justify-content: space-between;
+`;
 export default Header;

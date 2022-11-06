@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import styled from "styled-components";
 
 import useInput from "../../../hooks/useInput";
 import { changePeriod } from "../../../store/period";
@@ -29,9 +30,8 @@ const DatePicker = () => {
     setIsOpen(false);
   };
   return (
-    <div>
-      DatePicker
-      <div>
+    <Div>
+      <div className="period-and-button">
         <div>{`${startDate} ~ ${endDate}`}</div>
         <button onClick={handleToggle}>{isOpen ? "닫기" : "열기"}</button>
       </div>
@@ -53,8 +53,13 @@ const DatePicker = () => {
           </button>
         </div>
       )}
-    </div>
+    </Div>
   );
 };
 
+const Div = styled.div`
+  .period-and-button {
+    display: flex;
+  }
+`;
 export default DatePicker;
