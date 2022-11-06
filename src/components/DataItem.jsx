@@ -42,30 +42,31 @@ const DataItem = ({ key, data }) => {
     <DataItemContainer>
       <DataTitle>{data.title}</DataTitle>
       <DataBody>
-        <div>상태</div>
+        <p>상태</p>
         <div>{statusChange}</div>
       </DataBody>
       <DataBody>
-        <div>광고 생성일</div>
+        <p>광고 생성일</p>
         <div>{data.startDate.toString().substr(0, 10)}</div>
       </DataBody>
       <DataBody>
-        <span>일 희망 예산</span>
+        <p>일 희망 예산</p>
         <div>{financeData.BudgetFormat}만원</div>
       </DataBody>
       <DataBody>
-        <div>광고 수익률{data.report.roas}%</div>
+        <p>광고 수익률</p>
+        <div>{data.report.roas}%</div>
       </DataBody>
 
       <DataBody>
-        <span>매출</span>
+        <p>매출</p>
         <div>
           {financeData.SalesFormat}
           만원
         </div>
       </DataBody>
       <DataBody>
-        <span>광고비용</span>
+        <p>광고비용</p>
         <div>
           {financeData.CostFormat}
           만원
@@ -100,6 +101,13 @@ const DataItemBtn = styled.div`
 `;
 
 const DataBody = styled.div`
-  padding: 1rem 1rem 0;
+  padding: 1rem 1rem;
+  display: flex;
+  border-bottom: 1px solid #edeff1;
+
+  p {
+    color: #94a2ad;
+    width: 50%;
+  }
 `;
 export default DataItem;

@@ -78,10 +78,6 @@ const ADManagement = () => {
     setFiltered(ListData);
   }, []);
 
-  // const [selectValue, setSelectValue] = useState();
-  // const onChangeSelect = e => {
-  //   setSelectValue(e.target.value);
-  // };
   return (
     <ADContainer>
       <TitleBox name="광고관리" />
@@ -96,7 +92,9 @@ const ADManagement = () => {
       </SelectContainer>
       <DataItemBox>
         {filtered.map((v, i) => (
-          <DataItem key={i} data={v} />
+          <div>
+            <DataItem key={i} data={v} />
+          </div>
         ))}
       </DataItemBox>
     </ADContainer>
@@ -128,6 +126,10 @@ const DataItemBox = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   padding: 1rem;
+
+  div {
+    padding: 1rem;
+  }
 `;
 
 export default ADManagement;
