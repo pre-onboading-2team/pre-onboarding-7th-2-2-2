@@ -1,10 +1,13 @@
 import { Header } from "./components";
+import AdsControls from "./components/AdsControls";
+import AdsList from "./components/AdsList";
 
 const Ads = () => {
   return (
     <div>
       <Header />
-      Ads
+      <AdsControls />
+      <AdsList />
     </div>
   );
 };

@@ -2,11 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-import DefaultDate from "../constants/defaultDate";
 import { TREND_DATA_URL } from "../constants/url";
 import { changePeriod } from "./period";
-
-const { defaultStartDate, defaultEndDate } = DefaultDate;
 
 const getTrendData = createAsyncThunk("GET_TREND_DATA", async () => {
   const res = await axios.get(TREND_DATA_URL);
@@ -33,7 +30,10 @@ const trendDataSlice = createSlice({
     builder.addCase(getTrendData.fulfilled, (state, action) => {
       state.dailyData = action.payload;
       state.filteredData = action.payload.filter((data) => {
-        return data.date >= defaultStartDate && data.date <= defaultEndDate;
+        return (
+          data.date >= action.meta.arg.startDate &&
+          data.date <= action.meta.arg.endDate
+        );
       });
     });
     builder.addCase(changePeriod, (state, action) => {

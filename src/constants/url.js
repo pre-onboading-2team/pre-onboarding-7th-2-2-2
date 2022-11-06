@@ -1,2 +1,3 @@
-export const TREND_DATA_URL =
-  "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/87bdcbe0-76c9-4df3-a3b0-efb2980f66b5/wanted_FE_trend-data-set.json?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221105%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221105T170256Z&X-Amz-Expires=86400&X-Amz-Signature=344af2fffb1a759db51568d4d2cb2f6b3a34684ddb4e179f0e80f1ff7068b4fc&X-Amz-SignedHeaders=host&response-content-disposition=filename%3D%22wanted_FE_trend-data-set.json%22&x-id=GetObject";
+export const TREND_DATA_URL = "/dummy/trendData.json";
+
+export const ADS_DATA_URL = "/dummy/adsData.json";

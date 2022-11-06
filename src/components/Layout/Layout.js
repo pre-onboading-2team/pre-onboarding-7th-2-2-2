@@ -18,6 +18,7 @@ const Container = styled.div`
     background-color: #d4d4d4;
     > div:last-child {
       flex: 1;
+      padding: 30px;
     }
   }
 `;
