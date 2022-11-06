@@ -1,21 +1,33 @@
 /* eslint-disable arrow-parens */
 /* eslint-disable default-case */
 /* eslint-disable react/jsx-one-expression-per-line */
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const DataItem = ({ key, data }) => {
-  const Budget = [data.budget];
-  const BudgetFormat = Budget.toString()
-    .split('')
-    .splice(0, Budget.toString().length - 4);
-  const Sales = [data.report.convValue];
-  const SalesFormat = Sales.toString()
-    .split('')
-    .splice(0, Sales.toString().length - 4);
-  const Cost = [data.report.cost];
-  const CostFormat = Cost.toString()
-    .split('')
-    .splice(0, Sales.toString().length - 4);
+  const [financeData, setFinanceData] = useState(data);
+  const DigitComma = a => {
+    return a.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  };
+  useEffect(() => {
+    const BudgetFormat = DigitComma(
+      Math.floor(financeData.budget / 10000).toString()
+    );
+    const SalesFormat = DigitComma(
+      Math.floor(financeData.report.convValue / 10000).toString()
+    );
+
+    const CostFormat = DigitComma(
+      Math.floor(financeData.report.cost / 10000).toString()
+    );
+
+    setFinanceData({
+      ...financeData,
+      BudgetFormat,
+      SalesFormat,
+      CostFormat,
+    });
+  }, []);
 
   const statusChange = data.status.replace(/(active|ended)/g, v => {
     switch (v) {
@@ -39,7 +51,7 @@ const DataItem = ({ key, data }) => {
       </DataBody>
       <DataBody>
         <span>일 희망 예산</span>
-        <div>{BudgetFormat}만원</div>
+        <div>{financeData.BudgetFormat}만원</div>
       </DataBody>
       <DataBody>
         <div>광고 수익률{data.report.roas}%</div>
@@ -48,14 +60,14 @@ const DataItem = ({ key, data }) => {
       <DataBody>
         <span>매출</span>
         <div>
-          {SalesFormat}
+          {financeData.SalesFormat}
           만원
         </div>
       </DataBody>
       <DataBody>
         <span>광고비용</span>
         <div>
-          {CostFormat}
+          {financeData.CostFormat}
           만원
         </div>
       </DataBody>

@@ -1,6 +1,6 @@
 /* eslint-disable arrow-parens */
 /* eslint-disable react/no-array-index-key */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import DataItem from './DataItem';
 import TitleBox from './TitleBox';
@@ -70,15 +70,13 @@ const ADManagement = () => {
     if (e.target.value === '전체광고') {
       setFiltered(ListData);
     } else {
-      setFiltered(
-        [ListData].filter(item => {
-          console.log(item);
-          console.log(item.status);
-          return item.status === e.target.value;
-        })
-      );
+      setFiltered(ListData.filter(item => item.status === e.target.value));
     }
   };
+
+  useEffect(() => {
+    setFiltered(ListData);
+  }, []);
 
   // const [selectValue, setSelectValue] = useState();
   // const onChangeSelect = e => {
@@ -97,7 +95,7 @@ const ADManagement = () => {
         <button type="button">광고 만들기</button>
       </SelectContainer>
       <DataItemBox>
-        {ListData.map((v, i) => (
+        {filtered.map((v, i) => (
           <DataItem key={i} data={v} />
         ))}
       </DataItemBox>
