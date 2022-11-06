@@ -10,9 +10,10 @@ const MetaList = () => {
   const { filteredData } = useSelector((state) => state.trendData);
 
   const [metaData, setMetaData] = useState({});
+  const { startDate, endDate } = useSelector((state) => state.period);
 
   useEffect(() => {
-    dispatch(getTrendData());
+    dispatch(getTrendData({ startDate, endDate }));
   }, []);
 
   useEffect(() => {

@@ -7,16 +7,16 @@ import AdsListItem from "./AdsListItem";
 
 const AdsList = () => {
   const dispatch = useDispatch();
+  const { filteredAds } = useSelector((state) => state.adsData);
+  const { filter } = useSelector((state) => state.adsFilter);
 
-  const { ads } = useSelector((state) => state.adsData);
-  console.log(ads);
   useEffect(() => {
-    dispatch(getAdsData());
+    dispatch(getAdsData({ filter }));
   }, []);
 
   return (
     <Ul>
-      {ads.map((ad) => {
+      {filteredAds.map((ad) => {
         const { id, title, budget, startDate, status } = ad;
         const { cost, roas } = ad.report;
         const revenue = (roas * cost) / 100;
