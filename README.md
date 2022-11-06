@@ -53,10 +53,12 @@
 
 
 - 구현사항
-  - 대시보드 datePicker, 기간 필터
-  - 대시보드 통합광고 현황
-  - 대시보드 차트
-  - 대시보드 지표별 필터
+  - 대시보드
+    - datePicker, 기간 필터
+    - 통합광고 현황
+    - 차트, 차트필터(지표별)
+  - 광고관리
+    - 광고조회, 필터
   - 페이지 이동시 상태유지
 
 <br />
@@ -66,11 +68,11 @@
 ```bash
 src
 ├── components  // 공용 컴포넌트
-├── constants  // 상수
-├── hooks  // hooks
+├── constants
+├── hooks
 ├── pages // 페이지 및 페이지별 컴포넌트
 ├── store // 리덕스 툴킷 전역상태관리
-└── utils // dateformatting 등 유틸 함수
+└── utils // format 함수
 ```
 
 <br/>
@@ -184,11 +186,11 @@ const MetaList = () => {
     </Ul>
   );
 };
-
-- `getTrendData`로 데이터를 받아와 `trendDataSlice`로 디스패치합니다.
-- `periodSlice`에 설정된 기간에따라 `trendDataSlice`에 filtered 데이터가 저장되고 출력됩니다.
-
 ```
+- `getTrendData`로 데이터를 받아와 `trendDataSlice`로 디스패치합니다.
+- `periodSlice`에 설정된 기간에따라 `trendDataSlice`에 필터링된 데이터가 저장되고 출력됩니다.
+
+
 
 ## 7. 프로젝트 설치 및 실행 ✨
 
