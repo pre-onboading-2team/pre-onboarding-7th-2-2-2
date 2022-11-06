@@ -9,7 +9,7 @@ const Dashboard = () => {
       <header>통합광고현황</header>
       <ChartAndDataArea className="area">
         <MetaList />
-        <ChartArea />
+        <ChartArea className="chart" />
       </ChartAndDataArea>
     </Container>
   );
@@ -26,6 +26,13 @@ const Container = styled.div`
 
 const ChartAndDataArea = styled.div`
   background-color: white;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  .chart {
+    margin-top: 25px;
+    align-self: center;
+  }
 `;
 
 export default Dashboard;

@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useSelector } from "react-redux";
 
 import Chart from "./Chart";
 import ChartFilter from "./ChartFilter";
 
-const ChartArea = () => {
+const ChartArea = ({ className }) => {
   const tagFilterEntries = [
     ["click", "클릭수"],
     ["cost", "광고비"],
@@ -13,21 +13,20 @@ const ChartArea = () => {
     ["roas", "ROAS"],
   ];
 
-  const [leftTagEntries, setLeftTagEntries] = useState(tagFilterEntries[0]);
-  const [rightTagEntries, setRightTagEntries] = useState(tagFilterEntries[1]);
+  const { leftFilterEntries, rightFilterEntries } = useSelector(
+    (state) => state.chartFilter
+  );
 
   return (
-    <div>
+    <div className={className}>
       <ChartFilter
         tagFilterEntries={tagFilterEntries}
-        setLeftTagEntries={setLeftTagEntries}
-        setRightTagEntries={setRightTagEntries}
-        leftTagEntries={leftTagEntries}
-        rightTagEntries={rightTagEntries}
+        leftFilterEntries={leftFilterEntries}
+        rightFilterEntries={rightFilterEntries}
       />
       <Chart
-        leftTagEntries={leftTagEntries}
-        rightTagEntries={rightTagEntries}
+        leftTagEntries={leftFilterEntries}
+        rightTagEntries={rightFilterEntries}
       />
     </div>
   );

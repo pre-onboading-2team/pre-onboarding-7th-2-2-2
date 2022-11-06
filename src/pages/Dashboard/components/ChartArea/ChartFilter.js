@@ -1,22 +1,27 @@
+import { useDispatch } from "react-redux";
+
+import { changefilter } from "../../../../store/chartFilter";
 const ChartFilter = ({
   tagFilterEntries,
-  setLeftTagEntries,
-  setRightTagEntries,
-  leftTagEntries,
-  rightTagEntries,
+  rightFilterEntries,
+  leftFilterEntries,
 }) => {
+  const dispatch = useDispatch();
+
   const handleLeftChange = (e) => {
     const entry = tagFilterEntries.find(
       ([dataKey]) => dataKey === e.target.value
     );
-    setLeftTagEntries(entry);
+    // setLeftTagEntries(entry);
+    dispatch(changefilter({ leftFilterEntries: entry }));
   };
 
   const handleRightChange = (e) => {
     const entry = tagFilterEntries.find(
       ([dataKey]) => dataKey === e.target.value
     );
-    setRightTagEntries(entry);
+    // setRightTagEntries(entry);
+    dispatch(changefilter({ rightFilterEntries: entry }));
   };
 
   return (
@@ -24,11 +29,11 @@ const ChartFilter = ({
       <select
         name=""
         id=""
-        value={leftTagEntries[0]}
+        value={leftFilterEntries[0]}
         onChange={handleLeftChange}
       >
         {tagFilterEntries.map(([dataKey, tag]) => (
-          <option key={dataKey} value={[dataKey]}>
+          <option key={dataKey} value={dataKey} name={tag}>
             {tag}
           </option>
         ))}
@@ -37,7 +42,7 @@ const ChartFilter = ({
       <select
         name=""
         id=""
-        value={rightTagEntries[0]}
+        value={rightFilterEntries[0]}
         onChange={handleRightChange}
       >
         {tagFilterEntries.map(([dataKey, tag]) => (

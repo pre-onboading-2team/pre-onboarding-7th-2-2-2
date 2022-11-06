@@ -2,10 +2,18 @@ import styled from "styled-components";
 
 const Div = styled.div`
   height: 50px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 20px;
 `;
 
 const Header = () => {
-  return <Div>Header</Div>;
+  return (
+    <Div>
+      <div>사용자 님</div>
+    </Div>
+  );
 };
 
 export default Header;

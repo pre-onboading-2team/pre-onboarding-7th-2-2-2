@@ -4,13 +4,24 @@ import styled from "styled-components";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  .select-area {
+  /* justify-content: space-around; */
+  > div {
     display: flex;
     flex-direction: column;
+    margin: 20px;
+    label {
+      margin-bottom: 10px;
+    }
+    button {
+      margin-bottom: 10px;
+    }
+  }
+  .logo {
+    align-items: center;
+  }
+  .select-area {
   }
   .ads-area {
-    display: flex;
-    flex-direction: column;
   }
 `;
 
@@ -26,6 +37,7 @@ const Aside = ({ className }) => {
 
   return (
     <Container className={className}>
+      <div className="logo">LOGO</div>
       <div className="select-area">
         <label htmlFor="service">서비스</label>
         <select name="" id="service">

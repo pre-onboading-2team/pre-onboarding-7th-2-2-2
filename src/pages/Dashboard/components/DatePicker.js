@@ -58,8 +58,21 @@ const DatePicker = () => {
 };
 
 const Div = styled.div`
+  min-height: 50px;
   .period-and-button {
     display: flex;
+    align-items: center;
+    > * {
+      margin-right: 10px;
+    }
+  }
+  .picker {
+    position: absolute;
+    display: flex;
+    /* left: 0; */
+    right: 0;
+    margin-right: 10px;
+    margin-top: 10px;
   }
 `;
 export default DatePicker;
