@@ -19,7 +19,7 @@ const Chart = ({ leftTagEntries, rightTagEntries }) => {
 
   return (
     <LineChart
-      width={500}
+      width={700}
       height={300}
       data={filteredData}
       margin={{
